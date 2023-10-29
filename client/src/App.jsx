@@ -7,7 +7,6 @@ import Login from "./pages/Auth/Login";
 import DashBoard from "./pages/user/DashBoard";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
-import AdminRoute from "./components/routes/Adminroute";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import CreateProduct from "./pages/Admin/CreateProduct";
 import CreateCategory from "./pages/Admin/CreateCategory";
@@ -22,6 +21,7 @@ import CategoryProducts from "./pages/CategoryProducts";
 import CartPage from "./pages/CartPage";
 import AdminOrders from "./pages/Admin/AdminOrders";
 import Sidebar from "./components/Tailwind components/Sidebar";
+import AdminRoute from "./components/routes/AdminRoute";
 function App() {
   return (
     <>
