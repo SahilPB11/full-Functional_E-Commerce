@@ -10,6 +10,30 @@ const CartProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const productId = null;
 
+  // here whenever the cart will change here we are setting updatin the cart in local storage also
+  const setCartToLocalStorage = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  // here we getting the data from cart so that after reload the page our cart data will not go dissapera
+  const getCartFromLocalStorage = () => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    if (cart) {
+      return cart;
+    } else {
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    const cartFromLocalStorage = getCartFromLocalStorage();
+    setCart(cartFromLocalStorage);
+  }, []);
+
+  useEffect(() => {
+    setCartToLocalStorage(cart);
+  }, [cart]);
+
   useEffect(() => {
     const totalAmount = cart.reduce((accumulator, currentItem) => {
       return accumulator + currentItem.price * currentItem.quantity;
@@ -24,47 +48,27 @@ const CartProvider = ({ children }) => {
     setItemQuantity(amount);
   }, [cart]);
 
-  // update item Quantity
-  useEffect(() => {
+  // this function will work when i adding the same item again and again by add to cart function and its will update the itemquantity in real time
+  const updateItemQuantity = (productId, quantity) => {
     setCart((prevCart) => {
       const itemIndex = prevCart.findIndex((item) => item._id === productId);
       if (itemIndex > -1) {
         const updatedCart = [...prevCart];
-        updatedCart[itemIndex].quantity += 1;
+        updatedCart[itemIndex].quantity = quantity;
         return updatedCart;
+      } else {
+        return prevCart;
       }
-      return prevCart;
     });
-  }, [cart, productId]);
-
-  useEffect(() => {
-    setCart((prevCart) => {
-      const itemIndex = prevCart.findIndex((item) => item._id === productId);
-      if (itemIndex > -1) {
-        const updatedCart = [...prevCart];
-        if (updatedCart[itemIndex].quantity > 1) {
-          updatedCart[itemIndex].quantity -= 1;
-        } else {
-          updatedCart.splice(itemIndex, 1);
-        }
-        return updatedCart;
-      }
-      return prevCart;
-    });
-  }, [cart, productId]);
+  };
 
   const addToCart = (p) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item._id === p._id);
-      if (existingItem) {
-        existingItem.quantity += 1;
-        return prevCart;
-      } else {
-        const newItem = { ...p, quantity: 1 };
-        toast.success("Item added into cart Successfully")
-        return [...prevCart, newItem];
-      }
-    });
+    const existingItem = cart.find((item) => item._id === p._id);
+    if (existingItem) {
+      updateItemQuantity(p._id, existingItem.quantity + 1);
+    } else {
+      setCart((prevCart) => [...prevCart, { ...p, quantity: 1 }]);
+    }
   };
 
   // delete item from cart
