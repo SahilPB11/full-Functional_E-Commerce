@@ -61,6 +61,7 @@ const CartProvider = ({ children }) => {
         return prevCart;
       } else {
         const newItem = { ...p, quantity: 1 };
+        toast.success("Item added into cart Successfully")
         return [...prevCart, newItem];
       }
     });
@@ -70,6 +71,7 @@ const CartProvider = ({ children }) => {
   const removeCartItem = async (pid) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.filter((item) => item._id !== pid);
+      toast.success("Item removed from cart Successfully");
       return updatedCart;
     });
   };

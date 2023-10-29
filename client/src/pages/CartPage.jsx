@@ -11,6 +11,7 @@ const CartPage = () => {
   const {
     cart,
     total,
+    clearCart,
     removeCartItem,
     incrementQuantity,
     decrementQuantity,
@@ -48,6 +49,7 @@ const CartPage = () => {
         { nonce, cart }
       );
       setLoading(false);
+      clearCart();
       localStorage.removeItem("cart");
       auth?.user?.role === 1
         ? navigate(`/dashboard/admin/orders`)

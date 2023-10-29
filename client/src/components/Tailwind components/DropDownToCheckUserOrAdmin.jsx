@@ -16,10 +16,10 @@ export default function DropDownToCheckUserOrAdmin() {
   const { cart, setCart } = useContext(CartContext);
   const handleLogOut = async () => {
     try {
-      if (cart.length && auth.user && auth.user.role === 0) {
+      if ( auth.user && auth.user.role === 0) {
         const { data } = await axios.post(
           `${import.meta.env.VITE_APP_API}/api/v1/cart/save-cart`,
-          { cart }
+          { cart: cart }
         );
         toast.success(data?.message);
       }
