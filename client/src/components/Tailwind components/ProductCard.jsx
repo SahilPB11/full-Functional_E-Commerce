@@ -16,8 +16,8 @@ const ProductCard = ({ p, Admin = false }) => {
     console.error("Error parsing size:", error);
   }
   return (
-    <div>
-      <div className="border border-[#e4e4e4] h-[300px] mb-4 relative overflow-hidden group transition">
+    <div className=" mb-4 p-2">
+      <div className=" border border-[#e4e4e4] p-2 rounded-lg h-[300px] mb-4 relative overflow-hidden group transition">
         <div className="w-full h-full flex justify-center items-center">
           {/* image */}
           <div
@@ -28,7 +28,7 @@ const ProductCard = ({ p, Admin = false }) => {
               src={`${
                 import.meta.env.VITE_APP_API
               }/api/v1/product/product-photo/${p._id}`}
-              className="card-img-top rounded-3"
+              className="card-img-top rounded-3 border-0"
               alt={p.name}
               height={"270px"}
             />
@@ -55,7 +55,7 @@ const ProductCard = ({ p, Admin = false }) => {
           <></>
         )}
       </div>
-      <div>
+      <div className="mb-4 ">
         <Link to={`/product/${p.slug}`}>
           <h2 className="font-bold mb-1">{p.name}</h2>
         </Link>
@@ -64,7 +64,7 @@ const ProductCard = ({ p, Admin = false }) => {
           <p className="text-2xl text-blue-400 tracking-tight ">{p.price}</p>
           <s className="fs-5 text-red-400 ml-3">${p.price + p.price * 0.5}</s>
         </div>
-        <div>
+        <div >
           {size.length > 0 ? (
             <p>Size: {size.join(", ")}</p>
           ) : (
