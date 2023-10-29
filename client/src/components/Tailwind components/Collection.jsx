@@ -17,7 +17,7 @@ const Collection = () => {
                 className="group relative flex h-96 items-end overflow-hidden rounded-lg bg-gray-100 p-4 shadow-lg"
               >
                 <img
-                  src="../../../public/Collection-Images/Running .jpg"
+                  src="../../../public/Collection-images/Running.jpg"
                   loading="lazy"
                   alt="Photo by Austin Wade"
                   className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -38,7 +38,7 @@ const Collection = () => {
                 className="group relative flex h-96 items-end overflow-hidden rounded-lg bg-gray-100 p-4 shadow-lg"
               >
                 <img
-                  src="../../../public/Collection-Images/Sneaker.jpg"
+                  src="../../../public/Collection-images/Sneaker.jpg"
                   loading="lazy"
                   alt="Photo by engin akyurt"
                   className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -59,7 +59,7 @@ const Collection = () => {
                 className="group relative flex h-96 items-end overflow-hidden rounded-lg bg-gray-100 p-4 shadow-lg"
               >
                 <img
-                  src="../../../public/Collection-Images/Loafers.jpg"
+                  src="../../../public/Collection-images/Loafers.jpg"
                   loading="lazy"
                   alt="Photo by Austin Wade"
                   className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -80,7 +80,7 @@ const Collection = () => {
                 className="group relative flex h-96 items-end overflow-hidden rounded-lg bg-gray-100 p-4 shadow-lg"
               >
                 <img
-                  src="../../../public/Collection-Images/formal.jpg"
+                  src="../../../public/Collection-images/formal.jpg"
                   loading="lazy"
                   alt="Photo by Austin Wade"
                   className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
