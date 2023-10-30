@@ -356,10 +356,7 @@ export default function Header() {
               <div className="ml-2 flex lg:ml-0">
                 <Link to="/">
                   <span className="sr-only">Shoe-Dream</span>
-                  <img
-                    src="../../../../public/logo/2_generated2.png"
-                    className="h-9 w-auto"
-                  />
+                  <img src="../../../../logo/2_generated2.png" className="h-9 w-auto" />
                 </Link>
               </div>
 

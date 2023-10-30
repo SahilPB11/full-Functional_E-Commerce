@@ -28,41 +28,41 @@ const Orders = () => {
 
   return (
     <Layout title="User - All Orders">
-      <div className="container mx-auto mt-6">
+      <div className="container mx-auto mt-6 px-4 sm:px-6 lg:px-8">
         <div className="lg:flex">
           <div className="w-full lg:w-1/4">
             <UserMenu />
           </div>
-          <div className="w-full lg:w-1/4">
-            <h1 className="text-2xl text-center mb-6">All Orders</h1>
+          <div className="w-full lg:w-3/4 ml-2">
+            <h1 className="text-2xl text-center mt-4 mb-8">All Orders</h1>
             {orders.map((order, index) => (
-              <div key={index} className="border shadow mb-6">
+              <div key={index} className="border shadow mb-6 sm:mb-4">
                 <table className="table-auto w-full">
                   <thead>
                     <tr>
-                      <th className="w-1/6">#</th>
-                      <th className="w-1/6">Status</th>
-                      <th className="w-1/6">Buyer</th>
-                      <th className="w-1/6">Date</th>
-                      <th className="w-1/6">Payment</th>
-                      <th className="w-1/6">Quantity</th>
+                      <th className="w-1/6 sm:w-1/12 text-xs">Order #</th>
+                      <th className="w-1/6 sm:w-1/12 text-xs">Status</th>
+                      <th className="w-1/6 sm:w-1/12 text-xs">Buyer</th>
+                      <th className="w-1/6 sm:w-1/12 text-xs">Date</th>
+                      <th className="w-1/6 sm:w-1/12 text-xs">Payment</th>
+                      <th className="w-1/6 sm:w-1/12 text-xs">Quantity</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>{index + 1}</td>
-                      <td>{order?.status}</td>
-                      <td>{order?.buyer?.name}</td>
-                      <td>{moment(order?.createAt).fromNow()}</td>
-                      <td>{order?.payment?.success ? "Success" : "Failed"}</td>
-                      <td>{order?.products?.length}</td>
+                      <td className="text-xs">{index + 1}</td>
+                      <td className="text-xs">{order?.status}</td>
+                      <td className="text-xs">{order?.buyer?.name}</td>
+                      <td className="text-xs">{moment(order?.createAt).fromNow()}</td>
+                      <td className="text-xs">{order?.payment?.success ? "Success" : "Failed"}</td>
+                      <td className="text-xs">{order?.products?.length}</td>
                     </tr>
                   </tbody>
                 </table>
-                <div className="container mx-auto">
+                <div className="container mx-auto border-none text-sm sm:text-xs xs:text-xs">
                   {order?.products?.map((p, i) => (
-                    <div className="flex mb-2 p-3 card" key={p._id}>
-                      <div className="w-1/4">
+                    <div className="flex mb-2 p-3 flex-row" key={p._id}>
+                      <div className="w-1/4 sm:w-1/6">
                         <img
                           src={`${
                             import.meta.env.VITE_APP_API
@@ -71,10 +71,14 @@ const Orders = () => {
                           className="h-32 w-32 object-cover"
                         />
                       </div>
-                      <div className="w-3/4 pl-4">
-                        <p>{p.name}</p>
-                        <p>{p.description.substring(0, 30)}</p>
-                        <p>Price: {p.price}</p>
+                      <div className="w-3/4 sm:w-5/6 pl-4">
+                        <p className="text-base sm:text-sm xs:text-xs">{p.name}</p>
+                        <p className="text-sm text-gray-500 xs:text-xs">
+                          {p.description.substring(0, 30)}
+                        </p>
+                        <p className="text-base sm:text-sm xs:text-xs">
+                          Price: {p.price}
+                        </p>
                       </div>
                     </div>
                   ))}
