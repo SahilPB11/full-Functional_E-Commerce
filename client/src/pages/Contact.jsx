@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../components/layout/Layout";
 function Contact() {
   return (
-    <Layout>
+    <Layout title={"Contact Us"}>
       <div className="container my-24 mx-auto md:px-6">
         <section className="mb-32">
           <div className="block rounded-lg bg-black shadow-md dark:bg-neutral-700">

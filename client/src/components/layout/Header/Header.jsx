@@ -13,8 +13,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DropDownToCheckUserOrAdmin from "../../Tailwind components/DropDownToCheckUserOrAdmin";
 import { SidebarContext } from "../../../context/SidebarProvider";
 import { CartContext } from "../../../context/Cart";
-import Badge from '@mui/material/Badge';
-
+import Badge from "@mui/material/Badge";
 
 const navigation = {
   categories: [
@@ -357,7 +356,10 @@ export default function Header() {
               <div className="ml-2 flex lg:ml-0">
                 <Link to="/">
                   <span className="sr-only">Shoe-Dream</span>
-                  <img src="../logo/2_generated2.png" className="h-9 w-auto" />
+                  <img
+                    src="../../../../public/logo/2_generated2.png"
+                    className="h-9 w-auto"
+                  />
                 </Link>
               </div>
 
@@ -554,7 +556,7 @@ export default function Header() {
                   className="ml-4 flow-root lg:ml-6"
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  <Badge badgeContent={cart?.length} color="error" size="large" >
+                  <Badge badgeContent={cart?.length} color="error" size="large">
                     {cart?.length === 0 ? (
                       <ShoppingCartOutlinedIcon />
                     ) : (

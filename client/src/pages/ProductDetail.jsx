@@ -60,7 +60,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <Layout>
+    <Layout title={"Product View"}>
       <div className="row container">
         <div className="bg-white">
           <div>

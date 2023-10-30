@@ -30,7 +30,7 @@ const Products = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout title={"All Products"}>
       <div className="lg:flex">
         <div className="w-full lg:w-1/4 p-4">
           <AdminMenu />

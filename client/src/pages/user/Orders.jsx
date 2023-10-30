@@ -33,7 +33,7 @@ const Orders = () => {
           <div className="w-full lg:w-1/4">
             <UserMenu />
           </div>
-          <div className="w-full lg:w-3/4">
+          <div className="w-full lg:w-1/4">
             <h1 className="text-2xl text-center mb-6">All Orders</h1>
             {orders.map((order, index) => (
               <div key={index} className="border shadow mb-6">

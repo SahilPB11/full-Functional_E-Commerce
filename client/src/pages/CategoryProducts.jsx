@@ -28,7 +28,7 @@ const CategoryProducts = () => {
   }, [params?.slug]);
 
   return (
-    <Layout>
+    <Layout title={"Category Poducts"}>
       <div className="container mt-3 ">
         <div className="text-center">
           <div className="d-flex  justify-content-center ">

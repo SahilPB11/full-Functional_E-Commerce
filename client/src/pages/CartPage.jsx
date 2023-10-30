@@ -62,7 +62,7 @@ const CartPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout title={"CheckOut Page"}>
       <section className="h-100 h-custom bg-transparent">
         <h1 className="text-center bg-light p-1 mb-1">
           {`Hello ${auth?.token && auth?.user?.name}`}
