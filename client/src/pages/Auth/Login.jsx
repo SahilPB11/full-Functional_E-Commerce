@@ -139,7 +139,7 @@ const Login2 = () => {
                     required
                   />
                   <button
-                  type="button"
+                    type="button"
                     className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
                     onClick={togglePasswordVisibility}
                   >

@@ -333,7 +333,7 @@ export default function Header() {
 
       <header className="relative bg-white ">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
+          Login with this email: garg25@gmail.com & password: 555555
         </p>
 
         <nav
@@ -356,7 +356,10 @@ export default function Header() {
               <div className="ml-2 flex lg:ml-0">
                 <Link to="/">
                   <span className="sr-only">Shoe-Dream</span>
-                  <img src="../../../../logo/2_generated2.png" className="h-9 w-auto" />
+                  <img
+                    src="../../../../logo/2_generated2.png"
+                    className="h-9 w-auto"
+                  />
                 </Link>
               </div>
 

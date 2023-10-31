@@ -8,26 +8,60 @@ import ProductCard from "../../components/Tailwind components/ProductCard";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState();
 
-  // get all products
-  const getAllProducts = async () => {
+  // // get all products
+  const getAllProucts = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get(
-        `${import.meta.env.VITE_APP_API}/api/v1/product/get-products`
+        `${import.meta.env.VITE_APP_API}/api/v1/product/product-list/${page}`
       );
+      setLoading(false);
       if (data?.success) {
         setProducts(data?.products);
       }
     } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
+      setLoading(false);
+      console.log(error.message);
+      toast.error("something went wrong");
     }
   };
 
-  // lifecycle method
+  // getTotal count
+  const getTotal = async () => {
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_APP_API}/api/v1/product/product-count`
+      );
+      setTotal(data?.total);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    getAllProducts();
+    getTotal();
   }, []);
+  // load more
+  const loadMore = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_APP_API}/api/v1/product/product-list/${page}`
+      );
+      setLoading(false);
+      setProducts([...products, ...data?.products]);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    // if (page === 1) return;
+    loadMore();
+  }, [page]);
 
   return (
     <Layout title={"All Products"}>
@@ -51,6 +85,19 @@ const Products = () => {
                   </div>
                 ))}
               </div>
+            </div>
+            <div className="m-2 p-3">
+              {products && products.length > 0 && products.length < total && (
+                <button
+                  className="btn btn-warning"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPage(page + 1);
+                  }}
+                >
+                  Load More
+                </button>
+              )}
             </div>
           </section>
         </div>

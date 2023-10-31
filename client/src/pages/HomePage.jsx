@@ -46,34 +46,6 @@ function HomePage() {
     id: index,
   }));
 
-  useEffect(() => {
-    getTotal();
-  }, []);
-
-  // get all products
-  const getAllProucts = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_APP_API}/api/v1/product/product-list/${page}`
-      );
-      setLoading(false);
-      if (data?.success) {
-        setProducts(data?.products);
-      }
-    } catch (error) {
-      setLoading(false);
-      console.log(error.message);
-      toast.error("something went wrong");
-    }
-  };
-  // lifecycle method
-  useEffect(() => {
-    if (checked.length === 0 && value[0] === 0 && value[1] === 1000) {
-      getAllProucts();
-    }
-  }, [checked, value]);
-
   // getTotal count
   const getTotal = async () => {
     try {
@@ -85,11 +57,9 @@ function HomePage() {
       console.log(error);
     }
   };
-
   useEffect(() => {
-    if (page === 1) return;
-    loadMore();
-  }, [page]);
+    getTotal();
+  }, []);
 
   // load more
   const loadMore = async () => {
@@ -105,6 +75,10 @@ function HomePage() {
       console.log(error);
     }
   };
+  useEffect(() => {
+    if (page === 1) return;
+    loadMore();
+  }, [page]);
 
   // fileter by categories
   const handleFilter = (value, id) => {
